@@ -75,7 +75,7 @@
                         android:textSize="20dp" />
 
                     <TextView
-                        android:id="@+id/global"
+                        android:id="@+id/cases"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -97,6 +97,7 @@
                         android:textSize="20dp" />
 
                     <TextView
+                        android:id="@+id/deaths"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -118,6 +119,7 @@
                         android:textSize="20dp" />
 
                     <TextView
+                        android:id="@+id/recovered"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"

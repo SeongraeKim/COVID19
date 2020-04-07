@@ -1,14 +1,12 @@
 package com.kim.covid_19;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,64 +17,57 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FragmentTotal extends Fragment {
 
-    private TextView global;
-
-    /*@Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }*/
+    private TextView cases;
+    private TextView deaths;
+    private TextView recovered;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_total, container, false);
 
-        global = view.findViewById(R.id.global);
+        cases = view.findViewById(R.id.cases);
+        deaths = view.findViewById(R.id.deaths);
+        recovered = view.findViewById(R.id.recovered);
 
-        new Thread(){
-            @Override
-            public void run() {
-                //super.run();
-
-
-            }
-        }.start();
+        globalData task = new globalData();
+        task.execute();
 
         return view;
     }
 
-    Handler handler = new Handler(){
+    private class globalData extends AsyncTask<Void, Void, Map<String,String>> {
+
         @Override
-        public void handleMessage(@NonNull Message msg) {
-            //super.handleMessage(msg);
-            Bundle bundle = msg.getData();
+        protected Map<String, String> doInBackground(Void... voids) {
+            Map<String,String> result = new HashMap<>();
+            try {
+                Document document = Jsoup.connect("https://www.worldometers.info/coronavirus/").get();
+                Elements cases = document.select("#main_table_countries_today tbody tr.total_row_world td:eq(1)");
+                Elements deaths = document.select("#main_table_countries_today tbody tr.total_row_world td:eq(3)");
+                Elements recovered = document.select("#main_table_countries_today tbody tr.total_row_world td:eq(5)");
 
-            ArrayList<String> arrayList = bundle.getStringArrayList(lotto);
+                result.put("world_cases", cases.text());
+                result.put("world_deaths", deaths.text());
+                result.put("world_recovered", recovered.text());
 
-            String str = "";
-
-
-        }
-    };
-
-    /*private Elements lotto(){
-
-        Elements elements;
-
-        try {
-            Document doc = Jsoup.connect("https://dhlottery.co.kr/common.do?method=main").get();
-            elements = doc.select("#lottoDrwNo");
-
-        }catch (IOException e){
-            Log.d("에러 : ", e.getMessage());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return result;
         }
 
-        return elements;
-    }*/
+        @Override
+        protected void onPostExecute(Map<String, String> map) {
+
+            cases.setText(map.get("world_cases"));
+            deaths.setText(map.get("world_deaths"));
+            recovered.setText(map.get("world_recovered"));
+        }
+    }
 }
