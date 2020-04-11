@@ -23,7 +23,6 @@ public class FragmentRegion extends Fragment {
         View view = inflater.inflate(R.layout.fragment_region, container, false);
 
         MobileAds.initialize(getContext(), getString(R.string.admob_app_id));
-
         mAdView = view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

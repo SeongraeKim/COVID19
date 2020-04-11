@@ -43,7 +43,6 @@ public class FragmentTotal extends Fragment {
         kr_recovered = view.findViewById(R.id.kr_recovered);
 
         MobileAds.initialize(getContext(), getString(R.string.admob_app_id));
-
         mAdView = view.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -60,16 +59,10 @@ public class FragmentTotal extends Fragment {
         protected Map<String, String> doInBackground(Void... voids) {
             Map<String,String> result = new HashMap<>();
             try {
-                /* 전세계 통계 */
-                /*Document document1 = Jsoup.connect("https://www.worldometers.info/coronavirus/").get();
-                Elements world = document1.select("#main_table_countries_today tbody tr.total_row_world td");
-                result.put("world_cases", world.text().split(" ")[1] + " (" + world.text().split(" ")[2] + ")");
-                result.put("world_deaths", world.text().split(" ")[3] + " (" + world.text().split(" ")[4] + ")");
-                result.put("world_recovered", world.text().split(" ")[5] + "");*/
-
-                /* 국내 통계 */
+                /* Jsoup을 이용해 데이터 가져오기 */
                 Document document = Jsoup.connect("https://www.worldometers.info/coronavirus/").get();
                 Elements doc = document.select("table#main_table_countries_today tr");
+
 
                 String[] world_data = null;
                 String[] kr_data = null;
@@ -93,16 +86,6 @@ public class FragmentTotal extends Fragment {
                 e.printStackTrace();
             }
             return result;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
         }
 
         @Override
