@@ -5,12 +5,124 @@
     android:layout_height="match_parent"
     android:background="#2b81c8">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal|center_vertical"
-        android:textSize="40dp"
-        android:text="Region"/>
+        android:layout_above="@+id/adView"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <ImageView
+                    android:id="@+id/maskImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mask"/>
+
+                <TextView
+                    android:id="@+id/tv_region_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="지역별 현황"
+                    android:textColor="#fff"
+                    android:textSize="40sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:gravity="right"
+                android:textColor="#fff"
+                android:text="*확진자순 정렬"/>
+
+        </LinearLayout>
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:columnCount="5">
+
+            <TextView
+                android:id="@+id/tv_country"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_width="100dp"
+                android:layout_marginRight="10sp"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:id="@+id/tv_cases"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:paddingLeft="10dp"
+                android:textColor="#fff"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:text="확진자"/>
+            <TextView
+                android:id="@+id/tv_deaths"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:paddingLeft="10dp"
+                android:textColor="#fff"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="5sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:text="사망자"/>
+            <TextView
+                android:id="@+id/tv_recovered"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:paddingLeft="10dp"
+                android:textColor="#fff"
+                android:maxLines="1"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="1sp"
+                android:autoSizeMaxTextSize="30sp"
+                android:text="격리해제"/>
+
+        </GridLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/region_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -20,7 +132,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id_for_test">
+        ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>

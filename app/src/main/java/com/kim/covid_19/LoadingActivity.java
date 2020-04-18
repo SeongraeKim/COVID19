@@ -20,6 +20,6 @@ public class LoadingActivity extends Activity {
             public void run() {
                 finish();
             }
-        },1000);
+        },1500);
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">COVID-19</string>
+    <string name="app_name">코로나 확진자 현황</string>
     <string name="title_total">세계/국내</string>
     <string name="title_country">국가별</string>
     <string name="title_region">지역별</string>

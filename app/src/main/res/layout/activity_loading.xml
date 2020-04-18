@@ -3,14 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal|center_vertical"
     android:background="#2b81c8">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal|center_vertical"
-        android:textSize="30dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
         android:textColor="#fff"
-        android:text="로딩화면"/>
+        android:text="코로나19\n함께하면\n이겨낼 수 있습니다"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mask_lg"/>
 
 </LinearLayout>

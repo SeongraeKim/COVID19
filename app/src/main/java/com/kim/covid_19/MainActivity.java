@@ -1,6 +1,7 @@
 package com.kim.covid_19;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -10,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,22 +36,6 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    /*@Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return super.onKeyDown(keyCode, event);
-
-        if(keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME){
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        moveTaskToBack(true);
-        finish();
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }*/
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -73,7 +58,4 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-
-
-
 }
