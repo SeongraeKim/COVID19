@@ -7,8 +7,8 @@
 > + 국내 지역별 확진자 조회 (RecyclerView를 이용해 확진자 순으로 정렬)
 ### 스크린샷
 <div>
-<img src="/screenshot/page_load.png" height="450px"/>
-<img src="/screenshot/page1.png" height="450px"/>
-<img src="/screenshot/page2.png" height="450px"/>
-<img src="/screenshot/page3.png" height="450px"/>
+<img src="/screenshot/page_load.png" height="350px"/>
+<img src="/screenshot/page1.png" height="350px"/>
+<img src="/screenshot/page2.png" height="350px"/>
+<img src="/screenshot/page3.png" height="350px"/>
 </div>
