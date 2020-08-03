@@ -1,4 +1,4 @@
-package com.kim.covid_19;
+package com.kim.covid19;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,16 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
-import java.nio.channels.OverlappingFileLockException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -30,7 +24,6 @@ public class FragmentCountry extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private CountryRecyclerAdapter countryAdapter;
-    private AdView mAdView;
 
     @Nullable
     @Override
@@ -42,11 +35,6 @@ public class FragmentCountry extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-
-        // 애드몹 광고
-        mAdView = view.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         countryData task = new countryData();
         task.execute();
@@ -80,31 +68,44 @@ public class FragmentCountry extends Fragment {
                             country_data[j] = doc.get(i).select("td").get(j).text();
                         }
 
-                        country_num = Integer.parseInt(country_data[1].replace(",", ""));
-
-                        country_cases = country_data[1];
-                        if(country_data[2].equals("")){
+                        // 국가 순위
+                        country_num = Integer.parseInt(country_data[0].replace(",", ""));
+                        // 확진자
+                        country_cases = country_data[2];
+                        // 전일대비 증가한 확진자
+                        if(country_data[3].equals("")){
                             country_cases_p = "";
                         }else {
-                            country_cases_p = "(" + country_data[2] + ")";
+                            country_cases_p = "(" + country_data[3] + ")";
                         }
-                        if(country_data[3].equals("")){
+                        // 사망자
+                        if(country_data[4].equals("")){
                             country_deaths = "0";
                         }else {
-                            country_deaths = country_data[3];
+                            country_deaths = country_data[4];
                         }
-                        if (country_data[4].equals("")){
+                        // 전일대비 증가한 사망자
+                        if (country_data[5].equals("")){
                             country_deaths_p = "";
                         }else {
-                            country_deaths_p = "(" + country_data[4] + ")";
+                            country_deaths_p = "(" + country_data[5] + ")";
                         }
-                        if (country_data[5].equals("")){
+                        // 완치자
+                        if (country_data[6].equals("")){
                             country_recovered = "0";
                         }else {
-                            country_recovered = country_data[5];
+                            country_recovered = country_data[6];
                         }
 
-                        arrayList.add(new ListData(country_num, country_data[0], country_cases, country_cases_p, country_deaths, country_deaths_p, country_recovered));
+                        arrayList.add(new ListData(
+                                country_num,        // 국가 순위
+                                country_data[1],    // 국가명
+                                country_cases,      // 확진자
+                                country_cases_p,    // 전일대비 증가한 확진자
+                                country_deaths,     // 사망자
+                                country_deaths_p,   // 전일대비 증가한 사망자
+                                country_recovered   // 완치자
+                        ));
                     }
                 }
 
@@ -118,7 +119,7 @@ public class FragmentCountry extends Fragment {
         protected void onPostExecute(ArrayList<ListData> arrayList) {
 
             Collections.sort(arrayList);
-            Collections.reverse(arrayList);
+            //Collections.reverse(arrayList);
             countryAdapter = new CountryRecyclerAdapter(arrayList);
             recyclerView.setAdapter(countryAdapter);
         }

@@ -1,4 +1,4 @@
-package com.kim.covid_19;
+package com.kim.covid19;
 
 import android.content.Intent;
 import android.graphics.Point;

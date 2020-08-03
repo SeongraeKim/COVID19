@@ -1,4 +1,4 @@
-package com.kim.covid_19;
+package com.kim.covid19;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,10 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -28,7 +24,6 @@ public class FragmentRegion extends Fragment {
     private RecyclerView recyclerView2;
     private RecyclerView.LayoutManager layoutManager;
     private RegionRecyclerAdapter regionAdapter;
-    private AdView mAdView;
 
     @Nullable
     @Override
@@ -40,11 +35,6 @@ public class FragmentRegion extends Fragment {
         recyclerView2.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView2.setLayoutManager(layoutManager);
-
-        // 애드몹 광고
-        mAdView = view.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         regionData task = new regionData();
         task.execute();

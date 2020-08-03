@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "com.kim.covid_19"
+        applicationId "com.kim.covid19"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 5
@@ -29,8 +29,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation files('libs/jsoup-1.13.1.jar')
-    /* AdMob */
-    implementation 'com.google.android.gms:play-services-ads:18.0.0'
     /* RecyclerView */
     implementation 'com.android.support:recyclerview-v7:29.0.0'
 
