@@ -1,5 +1,7 @@
-코로나19 확진자 현황 <a href="https://github.com/SeongraeKim/COVID19App/tree/master/COVID19_status.apk">apk 설치하기</a>
+코로나19 확진자 현황
 ===================
+
+> <a href="https://blog.kakaocdn.net/dn/btNjRI/btqGdMaI2tS/BSqz9kl41jGJ6rKOzIcsak/COVID19_status.apk?attach=1&knm=tfile.apk">COVID19_status.apk</a>
 
 > ### 제작기간
 > 2020-04-07 ~ 2020-04-19
