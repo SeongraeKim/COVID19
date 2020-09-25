@@ -1,7 +1,7 @@
 코로나19 확진자 현황
 ===================
 
-> <a href="https://blog.kakaocdn.net/dn/btNjRI/btqGdMaI2tS/BSqz9kl41jGJ6rKOzIcsak/COVID19_status.apk?attach=1&knm=tfile.apk">COVID19_status.apk</a>
+> <a href="https://drive.google.com/file/d/1PS_qS9i3_T-bx6jvyBdB6U9iPwpoxYVP/view?usp=sharing">COVID19_status.apk</a>
 
 > ### 제작기간
 > 2020-04-07 ~ 2020-04-19
