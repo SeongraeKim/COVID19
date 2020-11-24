@@ -1,10 +1,8 @@
 코로나19 확진자 현황
 ===================
 
+> ### 앱 설치
 > <a href="https://drive.google.com/file/d/1PS_qS9i3_T-bx6jvyBdB6U9iPwpoxYVP/view?usp=sharing">COVID19_status.apk</a>
-
-> ### 제작기간
-> 2020-04-07 ~ 2020-04-19
 
 > ### 설명
 > 코로나19 확진자(확진, 사망, 격리해제)에 대한 정보를 확인하실 수 있습니다.
